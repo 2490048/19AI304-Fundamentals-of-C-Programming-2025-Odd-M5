@@ -39,7 +39,52 @@
 ### Step 12: 
   Stop
 # Program:
+```
+#include <stdio.h>
+
+void swapv(int x, int y)
+{
+    int temp;
+    temp = x;
+    x = y;
+    y = temp;
+    printf("\nInside swapv (call by value): x = %d, y = %d", x, y);
+}
+
+void swapr(int *x, int *y)
+{
+    int temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
+    printf("\nInside swapr (call by reference): a = %d, b = %d", *x, *y);
+}
+
+int main()
+{
+    int a = 10, b = 20;
+
+    printf("Before swapv: a = %d, b = %d", a, b);
+    swapv(a, b);
+    printf("\nAfter swapv: a = %d, b = %d\n", a, b);
+
+    printf("\nBefore swapr: a = %d, b = %d", a, b);
+    swapr(&a, &b);
+    printf("\nAfter swapr: a = %d, b = %d\n", a, b);
+
+    return 0;
+}
+```
 # Output:
+```
+Before swapv: a = 10, b = 20
+Inside swapv (call by value): x = 20, y = 10
+After swapv: a = 10, b = 20
+
+Before swapr: a = 10, b = 20
+Inside swapr (call by reference): a = 20, b = 10
+After swapr: a = 20, b = 10
+```
 # Result: 
   Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -77,7 +122,39 @@
 ### Step 10:
   Stop
 # Program:
+```
+#include <stdio.h>
+
+int fibo(int x)
+{
+    if (x == 0 || x == 1)
+        return x;
+    else
+        return fibo(x - 1) + fibo(x - 2);
+}
+
+int main()
+{
+    int n, i;
+
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+
+    printf("Fibonacci Series: ");
+    for (i = 0; i < n; i++)
+    {
+        printf("%d ", fibo(i));
+    }
+
+    return 0;
+}
+```
+
 # Output:
+```
+Enter the number of terms: 6
+Fibonacci Series: 0 1 1 2 3 5
+```
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -119,7 +196,41 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 12:
   Stop
 # Program:
+```
+#include <stdio.h>
+
+void printEvenOdd(int cur, int limit)
+{
+    if (cur > limit)
+        return;
+
+    printf("%d ", cur);
+
+    printEvenOdd(cur + 2, limit);
+}
+
+int main()
+{
+    int lowerLimit, upperLimit;
+
+    printf("Enter the lower limit: ");
+    scanf("%d", &lowerLimit);
+
+    printf("Enter the upper limit: ");
+    scanf("%d", &upperLimit);
+
+    printf("Numbers in the given range: ");
+    printEvenOdd(lowerLimit, upperLimit);
+
+    return 0;
+}
+```
 # Output:
+```
+Enter the lower limit: 3
+Enter the upper limit: 15
+Numbers in the given range: 3 5 7 9 11 13 15
+```
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -161,7 +272,50 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 11:
   Stop
 # Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int *ptr, n, i, sum = 0;
+
+    printf("Enter number of integers: ");
+    scanf("%d", &n);
+
+    ptr = (int *)calloc(n, sizeof(int));
+
+    if (ptr == NULL)
+    {
+        printf("Memory allocation failed");
+        return 0;
+    }
+
+    printf("Enter %d integers:\n", n);
+    for (i = 0; i < n; i++)
+    {
+        scanf("%d", ptr + i);
+    }
+
+    for (i = 0; i < n; i++)
+    {
+        sum += *(ptr + i);
+    }
+
+    printf("Sum = %d", sum);
+
+    free(ptr);
+
+    return 0;
+}
+```
 # Output:
+```
+Enter number of integers: 5
+Enter 5 integers:
+10 20 30 40 50
+Sum = 150
+```
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -197,6 +351,39 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10:
   Stop
 # Program:
+```
+#include <stdio.h>
+
+void displayArray(int *arr, int size)
+{
+    int i;
+    printf("Array elements: ");
+    for (i = 0; i < size; i++)
+    {
+        printf("%d ", *(arr + i));
+    }
+}
+
+int main()
+{
+    int arr[5], i;
+
+    printf("Enter 5 integers:\n");
+    for (i = 0; i < 5; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+
+    displayArray(arr, 5);
+
+    return 0;
+}
+```
 # Output:
+```
+Enter 5 integers:
+10 20 30 40 50
+Array elements: 10 20 30 40 50
+```
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
